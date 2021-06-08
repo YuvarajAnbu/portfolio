@@ -9,6 +9,7 @@ body {
   max-width: 1920px;
   margin: 0 auto;
   background-color: #fbfbfb;
+  transition-duration: 0.2s;
 }
 
 // $color: black;
@@ -200,6 +201,7 @@ $img-shadow: #3c797e25;
         width: 82px;
         height: 3px;
         border-radius: 50px;
+        transition: background-color 0.2s;
       }
     }
     p {
@@ -226,6 +228,14 @@ $img-shadow: #3c797e25;
         a {
           text-decoration: none;
           border-radius: 4px;
+
+          svg {
+            transition-duration: 0.1s;
+            g path,
+            g polygon {
+              transition-duration: 0.1s;
+            }
+          }
         }
 
         &:hover {
