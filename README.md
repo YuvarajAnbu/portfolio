@@ -3,5 +3,11 @@
 
 📃 languages used
 - HTML
-- CSS
+- SSS
 - JS
+
+## How to run it
+
+Clone the repo and open the html file on browser thats it.
+
+
