@@ -1,4 +1,5 @@
 # My Portfolio
+My personal portfolio where i showcase my projects
 [xanderhere.netlify.app](https://xanderhere.netlify.app)
 
 📃 languages used
