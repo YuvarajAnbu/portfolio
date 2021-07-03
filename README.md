@@ -4,7 +4,7 @@ My personal portfolio where i showcase my projects. <br>
 
 📃 languages used
 - HTML
-- SSS
+- SCSS
 - JS
 
 ## How to run it
