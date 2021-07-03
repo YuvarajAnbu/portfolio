@@ -35,6 +35,10 @@ body {
   fill: white !important;
 }
 
+.dark .resume {
+  fill: white !important;
+}
+
 .dark .navbar-links-hi {
   background-color: white;
   color: black;
@@ -344,6 +348,10 @@ body {
 
 .landing-content-social .linkedin {
   fill: #0a66c2;
+}
+
+.landing-content-social .resume {
+  fill: #000000;
 }
 
 @-webkit-keyframes fadeContent {

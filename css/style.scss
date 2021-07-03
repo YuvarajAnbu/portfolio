@@ -31,6 +31,9 @@ $img-shadow: #3c797e25;
   .github {
     fill: white !important;
   }
+  .resume {
+    fill: white !important;
+  }
 
   .navbar-links-hi {
     background-color: white;
@@ -277,6 +280,10 @@ $img-shadow: #3c797e25;
 
       .linkedin {
         fill: #0a66c2;
+      }
+
+      .resume {
+        fill: #000000;
       }
     }
   }
