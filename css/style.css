@@ -89,8 +89,7 @@ body {
 }
 
 .navbar-links li {
-  margin: 0 5px;
-  padding: 10px 20px;
+  margin: 0 15px;
   cursor: pointer;
   border-radius: 4px;
   -webkit-transition: all 200ms ease;
@@ -117,6 +116,7 @@ body {
 .navbar-links li a {
   text-decoration: none;
   color: currentColor;
+  padding: 10px 20px;
 }
 
 .navbar-links li p {

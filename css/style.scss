@@ -79,8 +79,7 @@ $img-shadow: #3c797e25;
     align-items: center;
     color: currentColor;
     li {
-      margin: 0 5px;
-      padding: 10px 20px;
+      margin: 0 15px;
       cursor: pointer;
       border-radius: 4px;
       transition: all 200ms ease;
@@ -96,6 +95,7 @@ $img-shadow: #3c797e25;
       a {
         text-decoration: none;
         color: currentColor;
+        padding: 10px 20px;
       }
       p {
         font-size: 14px;
