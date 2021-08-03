@@ -44,13 +44,13 @@ $img-shadow: #3c797e25;
     }
   }
 
-  .landing-content-social {
-    li:hover {
-      svg {
-        fill: rgb(68, 68, 68);
-      }
-    }
-  }
+  // .landing-content-social {
+  //   li:hover {
+  //     svg {
+  //       fill: rgb(68, 68, 68);
+  //     }
+  //   }
+  // }
 
   .sun {
     display: block !important;
@@ -213,7 +213,7 @@ $img-shadow: #3c797e25;
 
       span {
         color: #1da5a5;
-        cursor: pointer;
+        // cursor: pointer;
         font-weight: 600;
         text-transform: uppercase;
         text-decoration: underline;
@@ -242,13 +242,14 @@ $img-shadow: #3c797e25;
         }
 
         &:hover {
-          svg {
-            fill: #c2c2c2;
-            g path,
-            g polygon {
-              fill: inherit !important;
-            }
-          }
+          transform: scale(1.1);
+          // svg {
+          //   fill: #c2c2c2;
+          //   g path,
+          //   g polygon {
+          //     fill: inherit !important;
+          //   }
+          // }
         }
       }
 

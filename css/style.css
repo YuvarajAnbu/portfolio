@@ -48,10 +48,6 @@ body {
   color: white;
 }
 
-.dark .landing-content-social li:hover svg {
-  fill: #444444;
-}
-
 .dark .sun {
   display: block !important;
 }
@@ -274,7 +270,6 @@ body {
 
 .landing-content p span {
   color: #1da5a5;
-  cursor: pointer;
   font-weight: 600;
   text-transform: uppercase;
   text-decoration: underline;
@@ -309,13 +304,9 @@ body {
           transition-duration: 0.1s;
 }
 
-.landing-content-social li:hover svg {
-  fill: #c2c2c2;
-}
-
-.landing-content-social li:hover svg g path,
-.landing-content-social li:hover svg g polygon {
-  fill: inherit !important;
+.landing-content-social li:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 .landing-content-social .gmail .st0 {
