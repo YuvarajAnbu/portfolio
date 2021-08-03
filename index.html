@@ -396,7 +396,9 @@
         </div>
       </section>
     </section>
-    <footer><p>@2001. All rights reserved</p></footer>
+    <footer>
+      <p>@<span id="year"></span>. All rights reserved</p>
+    </footer>
 
     <script>
       (() => {
@@ -405,6 +407,8 @@
           document.querySelector('body').style.visibility = 'visible';
         };
       })();
+
+      document.getElementById('year').innerHTML = new Date().getFullYear();
 
       document
         .querySelector('.navbar-links-mode')
