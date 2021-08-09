@@ -1,6 +1,6 @@
 # My Portfolio
 My personal portfolio where i showcase my projects. <br>
-[xanderhere.netlify.app](https://xanderhere.netlify.app)
+[xanderhere.com](https://xanderhere.com)
 
 📃 languages used
 - HTML
