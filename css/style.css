@@ -48,6 +48,10 @@ body {
   color: white;
 }
 
+.dark .work .sspotify {
+  background-color: #5b615e;
+}
+
 .dark .sun {
   display: block !important;
 }
