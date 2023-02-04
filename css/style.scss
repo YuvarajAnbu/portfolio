@@ -4,48 +4,59 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: 'Nunito', sans-serif;
-  max-width: 1920px;
-  margin: 0 auto;
-  background-color: #fbfbfb;
-  transition-duration: 0.2s;
+:root {
+  --color: black;
+  --bg-color: #fbfbfb;
+  --img-shadow: #3c797e25;
+  --hover: rgba(255, 255, 255, 0.16);
+
+  --dark-bg-color: #1a1a1b;
+  --dark-color: white;
+  // $img-dark-shadow: #3c797e25;
 }
 
-// $color: black;
-$background-color: black;
-$img-shadow: #3c797e25;
+body {
+  font-family: "Nunito", sans-serif;
+  max-width: 1920px;
+  margin: 0 auto;
+  background-color: var(--bg-color);
+  color: var(--color);
+  transition-duration: 0.2s;
+}
 
 ::selection {
   color: #1da5a5;
 }
 
 .dark {
-  background-color: #1a1a1b;
-  color: white;
+  background-color: var(--dark-bg-color);
+  color: var(--dark-color);
 
   .landing-content-name-line {
-    background-color: white;
+    background-color: var(--dark-color);
   }
 
-  .github {
-    fill: white !important;
+  .github svg {
+    color: var(--dark-color) !important;
   }
-  .resume {
-    fill: white !important;
+  .resume svg {
+    color: var(--dark-color) !important;
   }
 
   .navbar-links-hi {
-    background-color: white;
-    color: black;
+    background-color: var(--dark-color);
+    color: var(--color);
 
     &:hover {
-      color: white;
+      color: var(--dark-color);
     }
   }
 
- .work .sspotify {
-    background-color: #5b615e;
+  // .work .sspotify {
+  //   background-color: #5b615e;
+  // }
+  .work-item {
+    background-color: var(--dark-bg);
   }
 
   // .landing-content-social {
@@ -70,6 +81,8 @@ $img-shadow: #3c797e25;
   justify-content: space-between;
   align-items: center;
   padding: 20px 6%;
+  position: relative;
+  z-index: 2;
   &-logo {
     font-size: 30px;
     font-weight: 700;
@@ -92,10 +105,6 @@ $img-shadow: #3c797e25;
       align-items: center;
       user-select: none;
 
-      &:hover {
-        background-color: rgba(0, 0, 0, 0.1);
-      }
-
       a {
         text-decoration: none;
         color: currentColor;
@@ -114,21 +123,17 @@ $img-shadow: #3c797e25;
       .sun {
         display: none;
       }
-
-      &:hover {
-        background-color: transparent !important;
-      }
     }
 
     &-hi {
-      background-color: black;
-      color: white;
+      background-color: var(--color);
+      color: var(--bg-color);
       margin-right: 0 !important;
 
       &:hover {
         background-color: transparent !important;
         text-decoration: underline;
-        color: black;
+        color: var(--color);
       }
     }
   }
@@ -140,6 +145,7 @@ $img-shadow: #3c797e25;
   align-items: center;
   margin: 150px auto;
   padding: 0 6%;
+  // background-color: ;
 
   &-img {
     width: 300px;
@@ -172,7 +178,7 @@ $img-shadow: #3c797e25;
       width: 100%;
       height: 100%;
       border-radius: 6px;
-      background-color: $img-shadow;
+      background-color: var(--img-shadow);
       opacity: 0;
       animation: fadeShadow 1s ease 0.5s;
       animation-fill-mode: forwards;
@@ -197,6 +203,8 @@ $img-shadow: #3c797e25;
     opacity: 0;
     animation: fadeContent 1s ease 0.5s;
     animation-fill-mode: forwards;
+    position: relative;
+    z-index: 2;
 
     &-name {
       h1 {
@@ -204,7 +212,7 @@ $img-shadow: #3c797e25;
         font-weight: 600;
       }
       &-line {
-        background-color: black;
+        background-color: var(--color);
         width: 82px;
         height: 3px;
         border-radius: 50px;
@@ -212,8 +220,8 @@ $img-shadow: #3c797e25;
       }
     }
     p {
-      font-size: 14px;
-      margin-top: 20px;
+      font-size: 15px;
+      margin-top: 23px;
 
       span {
         color: #1da5a5;
@@ -238,6 +246,7 @@ $img-shadow: #3c797e25;
 
           svg {
             transition-duration: 0.1s;
+            width: 20px;
             g path,
             g polygon {
               transition-duration: 0.1s;
@@ -257,38 +266,16 @@ $img-shadow: #3c797e25;
         }
       }
 
-      .gmail {
-        .st0 {
-          fill: #ea4335;
-        }
-        .st1 {
-          fill: #c5221f;
-        }
-        .st2 {
-          fill: #fbbc04;
-        }
-        .st3 {
-          fill: #34a853;
-        }
-        .st4 {
-          fill: #4285f4;
-        }
-      }
-
-      .twitter {
-        fill: #1da1f2;
-      }
-
       .github {
-        fill: black;
-      }
-
-      .linkedin {
-        fill: #0a66c2;
+        svg {
+          color: black;
+        }
       }
 
       .resume {
-        fill: #000000;
+        svg {
+          color: black;
+        }
       }
     }
   }
@@ -325,12 +312,13 @@ $img-shadow: #3c797e25;
     justify-content: space-between;
     align-items: stretch;
     border-radius: 8px;
-    color: white;
+    color: var(--bg-color);
     overflow: hidden;
     height: 520px;
     box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.12);
     margin-bottom: 80px;
     width: 100%;
+    background-color: var(--bg);
 
     &:hover &-img {
       img {
@@ -376,7 +364,7 @@ $img-shadow: #3c797e25;
           color: inherit;
 
           &:hover {
-            background-color: rgba(255, 255, 255, 0.16);
+            background-color: var(--hover);
           }
 
           svg {
@@ -460,21 +448,21 @@ $img-shadow: #3c797e25;
     }
   }
 
-  .standout {
-    background-color: #626a70;
-  }
+  // .standout {
+  //   background-color: #626a70;
+  // }
 
-  .photographer {
-    background-color: #184d47;
-  }
+  // .photographer {
+  //   background-color: #184d47;
+  // }
 
-  .concert {
-    background-color: #08272c;
-  }
+  // .concert {
+  //   background-color: #08272c;
+  // }
 
-  .sspotify {
-    background-color: #18201cc0;
-  }
+  // .sspotify {
+  //   background-color: #18201cc0;
+  // }
 }
 
 footer {
@@ -615,4 +603,21 @@ footer {
       }
     }
   }
+}
+
+#particles-js {
+  position: relative;
+}
+
+#particles-js canvas {
+  // position: fixed;
+  // top: 0;
+  // left: 0;
+  // bottom: 0;
+  // right: 0;
+  // z-index: -1;
+  // user-select: none;
+  display: block;
+  // width: 100%;
+  // height: 100%;
 }
