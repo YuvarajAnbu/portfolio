@@ -38,7 +38,7 @@ const works = [
     name: "Stand Out",
     span: "Online clothing store",
     desc: "An online clothing store, where you can BUY, ADD, EDIT, and DELETE products. You'll be welcomed to the site as admin.",
-    link: "https://standout.pw/",
+    link: "https://www.standout.pw/",
     github: "https://github.com/YuvarajAnbu/standout",
     img: "standout.webp",
     bg: "#626a70",
