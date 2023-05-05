@@ -9,8 +9,11 @@
   --bg-color: #fbfbfb;
   --img-shadow: #3c797e25;
   --hover: rgba(255, 255, 255, 0.16);
+  --selection-color: #1da5a5;
   --dark-bg-color: #1a1a1b;
   --dark-color: white;
+  --dark-img-shadow: rgba(8, 253, 216, 0.07);
+  --dark-selection-color: #08fdd8;
 }
 
 body {
@@ -23,19 +26,18 @@ body {
 }
 
 ::-moz-selection {
-  color: #1da5a5;
+  color: var(--selection-color);
 }
 
 ::selection {
-  color: #1da5a5;
+  color: var(--selection-color);
 }
 
 .dark {
   background-color: var(--dark-bg-color);
   color: var(--dark-color);
-}
-.dark .landing-content-name-line {
-  background-color: var(--dark-color);
+  --selection-color: var(--dark-selection-color);
+  --img-shadow: var(--dark-img-shadow);
 }
 .dark .github svg {
   color: var(--dark-color) !important;
@@ -123,7 +125,7 @@ body {
 .landing {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   margin: 150px auto;
   padding: 0 6%;
 }
@@ -176,7 +178,7 @@ body {
 }
 .landing-content {
   margin-left: 100px;
-  max-width: 550px;
+  max-width: 600px;
   opacity: 0;
   animation: fadeContent 1s ease 0.5s;
   animation-fill-mode: forwards;
@@ -187,8 +189,11 @@ body {
   font-size: 28px;
   font-weight: 600;
 }
+.landing-content-name h1 span {
+  color: var(--selection-color);
+}
 .landing-content-name-line {
-  background-color: var(--color);
+  background-color: var(--selection-color);
   width: 0px;
   height: 3px;
   border-radius: 50px;
@@ -203,10 +208,13 @@ body {
 .landing-content p:first-of-type {
   margin-top: 25px;
 }
+.landing-content p span {
+  color: var(--selection-color);
+}
 .landing-content-social {
   list-style-type: none;
   display: flex;
-  margin-top: 20px;
+  margin-top: 25px;
 }
 .landing-content-social li {
   border-radius: 4px;
@@ -248,7 +256,7 @@ body {
     width: 0;
   }
   100% {
-    width: 82px;
+    width: 120px;
   }
 }
 
@@ -422,6 +430,7 @@ footer {
   .landing {
     flex-direction: column;
     justify-content: flex-start;
+    align-items: center;
     margin-top: 100px;
     overflow: hidden;
   }

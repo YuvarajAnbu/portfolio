@@ -18,18 +18,50 @@ document.querySelector(".navbar-links-mode").addEventListener("click", () => {
   );
 });
 
+//skills
+const skills = [
+  "HTML",
+  "CSS",
+  "JavaScript",
+  "React.js",
+  "Next.js",
+  "Node.js",
+  "MongoDB",
+  "SQL",
+  "Python",
+  "Flask",
+];
+
+const fr = ["Bootstrap", "Tailwind", "JQuery", "Three.js", "GSAP"];
+
+let html = `I'm skilled at `;
+
+skills.forEach((el) => {
+  html += `<span>${el}</span>, `;
+});
+
+html += "and frameworks/libraries like ";
+
+fr.forEach((el, i) => {
+  html +=
+    i === fr.length - 1 ? `and <span>${el}</span>.` : `<span>${el}</span>, `;
+});
+
+document.getElementById("skills").insertAdjacentHTML("beforeend", html);
+
 //footer year
 document.getElementById("year").innerHTML = new Date().getFullYear();
 
 //work
+// img 2400 1600 800 400
 const works = [
   {
     name: "Sonderegger",
-    span: "A clone of Awwward winning site",
-    desc: "An exact clone of an Awwward winning site named Sonderegger. I optimized the site, which made it faster, smoother, and has the best loading speed than the original site.",
+    span: "Replicated Awwward winning site",
+    desc: "Replicated an award-winning website called Sonderegger using Next.js and Tailwind. As part of the process, I optimized the website, resulting in improved speed and smoother performance compared to the original site. The website now loads faster, providing a better user experience for visitors.",
     link: "https://sondereggerclone.vercel.app",
     github: "https://github.com/YuvarajAnbu/Sondereregger-clone",
-    img: "sonderegger.webp",
+    img: "sonderegger",
     single: true,
     bg: "#6c6868",
     darkBg: "#3e3e3e",
@@ -37,19 +69,19 @@ const works = [
   {
     name: "Stand Out",
     span: "Online clothing store",
-    desc: "An online clothing store, where you can BUY, ADD, EDIT, and DELETE products. You'll be welcomed to the site as admin.",
+    desc: "Designed and developed a comprehensive Full-Stack E-commerce website that allows users to purchase clothing items from A to Z. Upon visiting the site, you will be automatically logged in as an admin, giving you the ability to upload and edit products as needed.",
     link: "https://www.standout.pw",
     github: "https://github.com/YuvarajAnbu/standout",
-    img: "standout.webp",
+    img: "standout",
     bg: "#626a70",
   },
   {
     name: "Sspotify ",
-    span: "Spotify clone",
-    desc: "An exact clone of spotify, where you can listen to music just like spotify.",
+    span: "Replicated Spotify web-player",
+    desc: "Created a replica of the Spotify web player using React, complete with all functionalities such as playing music, creating queues, and even a karaoke feature. This project highlights my expertise in front-end development, particularly in using React to create dynamic and interactive web applications.",
     link: "https://sspotify.vercel.app",
     github: "https://github.com/YuvarajAnbu/spotify-clone",
-    img: "sspotify.webp",
+    img: "sspotify",
     single: true,
     bg: "#18201cc0",
     darkBg: "#5b615e",
@@ -60,7 +92,7 @@ const works = [
     desc: "A photographer portfolio, where he can showcase his works, let others know about him.",
     link: "https://xander-photographer.netlify.app",
     github: "https://github.com/YuvarajAnbu/photograher-portfolio",
-    img: "photographer.webp",
+    img: "photographer",
     single: true,
     bg: "#184d47",
   },
@@ -119,21 +151,27 @@ works.forEach((el) => {
 </div>
 <div class="work-item-img">
   <img
-    src="./images/${el.img}"
+    src="./images/${el.img}_800.webp"
     alt="website image"
-    loading="lazy"
-    sizes="(max-width: 479px) 93vw, (max-width: 767px) 68vw, (max-width: 991px) 60vw, (max-width: 1279px) 31vw, 29vw"
-    srcset="./images/${el.img} 500w, ./images/${el.img} 800w"
+    srcset="
+    ./images/${el.img}-400.webp 400w, 
+    ./images/${el.img}-800.webp 800w, 
+    ./images/${el.img}-1600.webp 1600w, 
+    ./images/${el.img}-2400.webp 2400w"
+    sizes="(max-width: 500px) 400px, 800px"
   />
   ${
     !el.single
       ? `<img
     class="back"
-    src=./images/${el.img}
+    src="./images/${el.img}_800.webp"
     alt="website image"
-    loading="lazy"
-    sizes="(max-width: 479px) 100vw, (max-width: 767px) 40vw, (max-width: 991px) 35vw, (max-width: 1279px) 22vw, 20vw"
-    srcset="./images/${el.img} 500w, ./images/${el.img} 800w"
+    srcset="
+    ./images/${el.img}-400.webp 400w, 
+    ./images/${el.img}-800.webp 800w, 
+    ./images/${el.img}-1600.webp 1600w, 
+    ./images/${el.img}-2400.webp 2400w"
+    sizes="(max-width: 500px) 400px, 800px"
   />`
       : ""
   }

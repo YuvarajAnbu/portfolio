@@ -9,9 +9,12 @@
   --bg-color: #fbfbfb;
   --img-shadow: #3c797e25;
   --hover: rgba(255, 255, 255, 0.16);
+  --selection-color: #1da5a5;
 
   --dark-bg-color: #1a1a1b;
   --dark-color: white;
+  --dark-img-shadow: rgba(8, 253, 216, 0.07);
+  --dark-selection-color: #08fdd8;
   // $img-dark-shadow: #3c797e25;
 }
 
@@ -25,17 +28,14 @@ body {
 }
 
 ::selection {
-  color: #1da5a5;
+  color: var(--selection-color);
 }
 
 .dark {
   background-color: var(--dark-bg-color);
   color: var(--dark-color);
-
-  .landing-content-name-line {
-    background-color: var(--dark-color);
-  }
-
+  --selection-color: var(--dark-selection-color);
+  --img-shadow: var(--dark-img-shadow);
   .github svg {
     color: var(--dark-color) !important;
   }
@@ -142,7 +142,7 @@ body {
 .landing {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   margin: 150px auto;
   padding: 0 6%;
   // background-color: ;
@@ -201,7 +201,7 @@ body {
   &-content {
     margin-left: 100px;
     // max-width: 460px;
-    max-width: 550px;
+    max-width: 600px;
     opacity: 0;
     animation: fadeContent 1s ease 0.5s;
     animation-fill-mode: forwards;
@@ -212,9 +212,13 @@ body {
       h1 {
         font-size: 28px;
         font-weight: 600;
+
+        span {
+          color: var(--selection-color);
+        }
       }
       &-line {
-        background-color: var(--color);
+        background-color: var(--selection-color);
         width: 0px;
         height: 3px;
         border-radius: 50px;
@@ -232,19 +236,15 @@ body {
         margin-top: 25px;
       }
 
-      // span {
-      //   color: #1da5a5;
-      //   // cursor: pointer;
-      //   font-weight: 600;
-      //   text-transform: uppercase;
-      //   text-decoration: underline;
-      // }
+      span {
+        color: var(--selection-color);
+      }
     }
 
     &-social {
       list-style-type: none;
       display: flex;
-      margin-top: 20px;
+      margin-top: 25px;
       li {
         border-radius: 4px;
         margin-right: 10px;
@@ -306,8 +306,8 @@ body {
     }
 
     100% {
-      // width: 150px;
-      width: 82px;
+      width: 120px;
+      // width: 82px;
     }
   }
 }
@@ -522,6 +522,7 @@ footer {
   .landing {
     flex-direction: column;
     justify-content: flex-start;
+    align-items: center;
     margin-top: 100px;
     overflow: hidden;
 
