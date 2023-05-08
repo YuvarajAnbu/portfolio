@@ -32,25 +32,25 @@ const skills = [
   "Flask",
 ];
 
+//frameworks
 const fr = ["Bootstrap", "Tailwind", "JQuery", "Three.js", "GSAP"];
 
-let html = `I'm skilled at `;
-
-skills.forEach((el) => {
-  html += `<span>${el}</span>, `;
-});
-
-html += "and frameworks/libraries like ";
-
-fr.forEach((el, i) => {
-  html +=
-    i === fr.length - 1 ? `and <span>${el}</span>.` : `<span>${el}</span>, `;
-});
+let html = `I'm skilled at ${skills
+  .map((el) => `<span>${el}</span>`)
+  .join(", ")}, and frameworks/libraries like ${fr
+  .slice(0, -1)
+  .map((el) => `<span>${el}</span>`)
+  .join(", ")}, and <span>${fr.slice(-1)}</span>`;
 
 document.getElementById("skills").insertAdjacentHTML("beforeend", html);
 
+const year = new Date().getFullYear();
+
+//experience year
+document.getElementById("exp").innerHTML = year - 2021;
+
 //footer year
-document.getElementById("year").innerHTML = new Date().getFullYear();
+document.getElementById("year").innerHTML = year;
 
 //work
 // img 2400 1600 800 400
@@ -58,7 +58,18 @@ const works = [
   {
     name: "Sonderegger",
     span: "Replicated Awwward winning site",
-    desc: "Replicated an award-winning website called Sonderegger using Next.js and Tailwind. As part of the process, I optimized the website, resulting in improved speed and smoother performance compared to the original site. The website now loads faster, providing a better user experience for visitors.",
+    desc: "Replicated an awwward-winning website called Sonderegger using Next.js and Tailwind. As part of the process, I optimized the website, resulting in improved speed and smoother performance compared to the original site. The website now loads faster, providing a better user experience for visitors.",
+    tools: [
+      "HTML",
+      "CSS",
+      "Tailwind",
+      "JavaScript",
+      "TypeScript",
+      "GSAP",
+      "React",
+      "Next",
+      "Node",
+    ],
     link: "https://sondereggerclone.vercel.app",
     github: "https://github.com/YuvarajAnbu/Sondereregger-clone",
     img: "sonderegger",
@@ -70,15 +81,37 @@ const works = [
     name: "Stand Out",
     span: "Online clothing store",
     desc: "Designed and developed a comprehensive Full-Stack E-commerce website that allows users to purchase clothing items from A to Z. Upon visiting the site, you will be automatically logged in as an admin, giving you the ability to upload and edit products as needed.",
+    tools: [
+      "HTML",
+      "CSS",
+      "Sass",
+      "JavaScript",
+      "React",
+      "Node",
+      "Express",
+      "MongoDB",
+    ],
     link: "https://www.standout.pw",
     github: "https://github.com/YuvarajAnbu/standout",
     img: "standout",
     bg: "#626a70",
   },
   {
+    name: "DMR Contractors",
+    span: "Builders website",
+    desc: "Designed & developed a construction company website with plain HTML, CSS, & JavaScript. Focused on user-friendly interface, modern design, interactive features such as image gallery & contact form. Collaborated closely with client to ensure vision was represented. ",
+    tools: ["HTML", "CSS", "Sass", "JavaScript"],
+    link: "https://dmrcontractors.in",
+    github: "https://github.com/YuvarajAnbu/dmr-contarctors",
+    img: "dmr",
+    bg: "#0c38c2",
+    darkBg: "#092680",
+  },
+  {
     name: "Sspotify ",
     span: "Replicated Spotify web-player",
     desc: "Created a replica of the Spotify web player using React, complete with all functionalities such as playing music, creating queues, and even a karaoke feature. This project highlights my expertise in front-end development, particularly in using React to create dynamic and interactive web applications.",
+    tools: ["HTML", "CSS", "SCSS", "JavaScript", "React", "Redux"],
     link: "https://sspotify.vercel.app",
     github: "https://github.com/YuvarajAnbu/spotify-clone",
     img: "sspotify",
@@ -89,7 +122,8 @@ const works = [
   {
     name: "Photographer",
     span: "Photographer portfolio",
-    desc: "A photographer portfolio, where he can showcase his works, let others know about him.",
+    desc: "a photographer's portfolio, designed to showcase their work and provide information about them to others.",
+    tools: ["HTML", "CSS", "JavaScript", "React", "GSAP"],
     link: "https://xander-photographer.netlify.app",
     github: "https://github.com/YuvarajAnbu/photograher-portfolio",
     img: "photographer",
@@ -106,6 +140,9 @@ works.forEach((el) => {
   <h1>${el.name} <span>${el.span}</span></h1>
 
   <p>${el.desc}</p>
+  <div class="work-item-content-tools">
+  ${el.tools ? el.tools.map((e) => `<span>${e}</span>`).join("") : ""}
+  </div>
   <div class="work-item-content-btns">
     <a
       href=${el.link}

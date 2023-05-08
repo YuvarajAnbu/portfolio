@@ -236,8 +236,10 @@ body {
         margin-top: 25px;
       }
 
-      span {
-        color: var(--selection-color);
+      &#skills {
+        span {
+          color: var(--selection-color);
+        }
       }
     }
 
@@ -364,8 +366,22 @@ body {
       }
 
       p {
-        margin: 25px 0 29px 0;
+        margin: 25px 0 20px 0;
         font-weight: 600;
+      }
+
+      &-tools {
+        margin-bottom: 30px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        span {
+          font-size: 12px;
+          background-color: var(--hover);
+          border-radius: 2px;
+          padding: 3px 8px;
+          cursor: default;
+        }
       }
 
       &-btns {

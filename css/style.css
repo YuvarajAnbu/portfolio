@@ -208,7 +208,7 @@ body {
 .landing-content p:first-of-type {
   margin-top: 25px;
 }
-.landing-content p span {
+.landing-content p#skills span {
   color: var(--selection-color);
 }
 .landing-content-social {
@@ -308,8 +308,21 @@ body {
   font-size: 12px;
 }
 .work-item-content p {
-  margin: 25px 0 29px 0;
+  margin: 25px 0 20px 0;
   font-weight: 600;
+}
+.work-item-content-tools {
+  margin-bottom: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.work-item-content-tools span {
+  font-size: 12px;
+  background-color: var(--hover);
+  border-radius: 2px;
+  padding: 3px 8px;
+  cursor: default;
 }
 .work-item-content-btns a {
   margin-bottom: 5px;
