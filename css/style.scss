@@ -145,7 +145,6 @@ body {
   align-items: flex-end;
   margin: 150px auto;
   padding: 0 6%;
-  // background-color: ;
 
   &-img {
     width: 300px;
@@ -200,7 +199,6 @@ body {
   }
   &-content {
     margin-left: 100px;
-    // max-width: 460px;
     max-width: 600px;
     opacity: 0;
     animation: fadeContent 1s ease 0.5s;
@@ -640,21 +638,4 @@ footer {
       }
     }
   }
-}
-
-#particles-js {
-  position: relative;
-}
-
-#particles-js canvas {
-  // position: fixed;
-  // top: 0;
-  // left: 0;
-  // bottom: 0;
-  // right: 0;
-  // z-index: -1;
-  // user-select: none;
-  display: block;
-  // width: 100%;
-  // height: 100%;
 }

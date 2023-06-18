@@ -527,11 +527,4 @@ footer {
   .work .single > div:nth-child(2) img {
     min-width: 100%;
   }
-}
-#particles-js {
-  position: relative;
-}
-
-#particles-js canvas {
-  display: block;
 }/*# sourceMappingURL=style.css.map */

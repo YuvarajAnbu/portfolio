@@ -33,7 +33,14 @@ const skills = [
 ];
 
 //frameworks
-const fr = ["Bootstrap", "Tailwind", "JQuery", "Three.js", "GSAP"];
+const fr = [
+  "Bootstrap",
+  "Tailwind",
+  "jQuery",
+  "TypeScript",
+  "Three.js",
+  "GSAP",
+];
 
 let html = `I'm skilled at ${skills
   .map((el) => `<span>${el}</span>`)
@@ -90,6 +97,7 @@ const works = [
       "Node",
       "Express",
       "MongoDB",
+      "Cloudinary",
     ],
     link: "https://www.standout.pw",
     github: "https://github.com/YuvarajAnbu/standout",
@@ -100,7 +108,7 @@ const works = [
     name: "DMR Contractors",
     span: "Builders website",
     desc: "Designed & developed a construction company website with plain HTML, CSS, & JavaScript. Focused on user-friendly interface, modern design, interactive features such as image gallery & contact form. Collaborated closely with client to ensure vision was represented. ",
-    tools: ["HTML", "CSS", "Sass", "JavaScript"],
+    tools: ["HTML", "CSS", "Sass", "JavaScript", "Cloudinary"],
     link: "https://dmrcontractors.in",
     github: "https://github.com/YuvarajAnbu/dmr-contarctors",
     img: "dmr",
