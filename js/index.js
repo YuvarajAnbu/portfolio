@@ -40,7 +40,7 @@ const fr = [
   "TypeScript",
   "Three.js",
   "GSAP",
-  "Framer motion",
+  "Framer Motion",
 ];
 
 let html = `I'm skilled at ${skills
