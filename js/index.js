@@ -40,6 +40,7 @@ const fr = [
   "TypeScript",
   "Three.js",
   "GSAP",
+  "Framer motion",
 ];
 
 let html = `I'm skilled at ${skills
@@ -99,7 +100,7 @@ const works = [
       "MongoDB",
       "Cloudinary",
     ],
-    link: "https://www.standout.pw",
+    link: "https://standout.icu",
     github: "https://github.com/YuvarajAnbu/standout",
     img: "standout",
     bg: "#626a70",
