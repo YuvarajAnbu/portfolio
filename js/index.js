@@ -1,10 +1,10 @@
 //fout
-(() => {
-  document.querySelector("body").style.visibility = "hidden";
-  window.onload = () => {
-    document.querySelector("body").style.visibility = "visible";
-  };
-})();
+// (() => {
+//   document.querySelector("body").style.visibility = "hidden";
+//   window.onload = () => {
+//     document.querySelector("body").style.visibility = "visible";
+//   };
+// })();
 
 //theme
 if (localStorage.getItem("dark") === "false")
@@ -36,7 +36,9 @@ const skills = [
 const fr = [
   "Bootstrap",
   "Tailwind",
-  "jQuery",
+  "JQuery",
+  "Jest",
+  "React-testing",
   "TypeScript",
   "Three.js",
   "GSAP",
