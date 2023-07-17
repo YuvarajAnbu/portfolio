@@ -1,10 +1,7 @@
 //fout
-// (() => {
-//   document.querySelector("body").style.visibility = "hidden";
-//   window.onload = () => {
-//     document.querySelector("body").style.visibility = "visible";
-//   };
-// })();
+// window.onload = () => {
+//   document.querySelector("body").classList.remove("hidden");
+// };
 
 //theme
 if (localStorage.getItem("dark") === "false")
