@@ -1,7 +1,8 @@
 //fout
-// window.onload = () => {
-//   document.querySelector("body").classList.remove("hidden");
-// };
+window.onload = () => {
+  document.querySelector("body").style.visibility = "visible";
+  document.querySelector("body").classList.add("loaded");
+};
 
 //theme
 if (localStorage.getItem("dark") === "false")
