@@ -533,7 +533,7 @@ footer {
 }
 
 @media (max-width: 1000px) {
-  .landing {
+  .loaded .landing {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
