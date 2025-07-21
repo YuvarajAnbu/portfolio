@@ -100,7 +100,7 @@ const works = [
       "MongoDB",
       "Cloudinary",
     ],
-    link: "https://standout.icu",
+    link: "https://standout.fit",
     github: "https://github.com/YuvarajAnbu/standout",
     img: "standout",
     bg: "#626a70",
