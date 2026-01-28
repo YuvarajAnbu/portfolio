@@ -142,7 +142,7 @@ body {
 .loaded .landing {
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: flex-start;
   margin: 150px auto;
   padding: 0 6%;
 
@@ -199,7 +199,8 @@ body {
   }
   &-content {
     margin-left: 100px;
-    max-width: 600px;
+    margin-top: 50px;
+    max-width: 700px;
     opacity: 0;
     animation: fadeContent 1s ease 0.5s;
     animation-fill-mode: forwards;
@@ -232,6 +233,12 @@ body {
 
       &:first-of-type {
         margin-top: 25px;
+      }
+
+      a {
+        font-weight: 600;
+        color: var(--selection-color);
+        cursor: pointer;
       }
 
       &#skills {
