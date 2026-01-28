@@ -1,7 +1,7 @@
 # My Portfolio
 
 My personal portfolio where i showcase my projects. <br>
-[yuvarajanbu.com](https://yuvarajanbu.com)
+[yuvarajanbu.dev](https://yuvarajanbu.dev)
 
 📃 languages used
 
