@@ -12,7 +12,7 @@ document.querySelector(".navbar-links-mode").addEventListener("click", () => {
   document.querySelector("body").classList.toggle("dark");
   localStorage.setItem(
     "dark",
-    document.querySelector("body").classList.contains("dark")
+    document.querySelector("body").classList.contains("dark"),
   );
 });
 
@@ -21,26 +21,30 @@ const skills = [
   "HTML",
   "CSS",
   "JavaScript",
+  "TypeScript",
   "React.js",
   "Next.js",
   "Node.js",
-  "MongoDB",
-  "SQL",
   "Python",
   "Flask",
+  "MongoDB",
 ];
 
 //frameworks
 const fr = [
-  "Bootstrap",
   "Tailwind",
-  "JQuery",
-  "Jest",
-  "React-testing",
-  "TypeScript",
   "Three.js",
+  "D3.js",
   "GSAP",
   "Framer Motion",
+  "Zustand",
+  "Redux",
+  "Xterm.js",
+  "Monaco Editor",
+  "Tiptap",
+  "Payload CMS",
+  "Azure DevOps",
+  "Cloudinary",
 ];
 
 let html = `I'm skilled at ${skills
@@ -55,10 +59,135 @@ document.getElementById("skills").insertAdjacentHTML("beforeend", html);
 const year = new Date().getFullYear();
 
 //experience year
-document.getElementById("exp").innerHTML = year - 2021;
+document.getElementById("exp").innerText = year - 2021;
 
 //footer year
-document.getElementById("year").innerHTML = year;
+document.getElementById("year").innerText = year;
+
+// experience
+const experiences = [
+  {
+    company: "Expeditech Inc (Truvanta)",
+    title: "Frontend Lead (Mid → Senior → Lead in 7 months)",
+    date: "Jan 2024 – Mar 2026",
+    bullets: [
+      "Owned the entire frontend architecture of an RMM platform as the sole senior engineer — from system design to delivery.",
+      "Rewrote the codebase in TypeScript and overhauled the component system, reducing recurring UI bugs by ~35%.",
+      "Built a VS Code-style script editor (Monaco) with live output, a browser-based terminal (Xterm.js), and an in-app documentation editor (Tiptap).",
+      "Shipped the full product surface: D3 dashboards, script automation, MFA auth flow, notifications, customizable theming system, and profile management.",
+      "Designed and developed the company marketing site end-to-end, evolving the stack from Webflow to Next.js + Payload CMS as the product scaled.",
+    ],
+  },
+  {
+    company: "Ideeza (Contract)",
+    title: "Lead Three.js Developer",
+    date: "Dec 2021 – Mar 2022",
+    bullets: [
+      "Built a browser-based 3D PCB editor from scratch using Three.js — users could design complete boards with layers, traces, vias, and components (similar to lightweight CAD tooling).",
+      "Implemented editor-style tooling: cursor mode switching, multiple cameras, undo/redo, and multi-format 3D import/export.",
+    ],
+  },
+  {
+    company: "Freelance",
+    title: "Full Stack Developer",
+    date: "Jan 2021 – Jan 2024",
+    bullets: [
+      "Built full-stack apps for multiple clients — reduced a client's security vulnerability rate from 2.5% to 0.02% and improved load times by 20%+ across several projects.",
+      "Designed and developed a full marketing site for a France-based cloud services startup (Apvel Technologies), handling design, development, and deployment end-to-end.",
+      "Designed and developed a production business site for a construction contractor — responsive, performant, and still live today.",
+      "Led a 5-person dev team on one contract, managing delivery and code review end-to-end.",
+    ],
+  },
+];
+
+// render tabs
+const tabList = document.querySelector(".experience-tabs");
+const panelList = document.querySelector(".experience-panels");
+
+experiences.forEach((exp, i) => {
+  // tab button
+  const tab = document.createElement("li");
+  tab.innerHTML = `<button class="exp-tab ${i === 0 ? "active" : ""}" data-index="${i}">${exp.company}</button>`;
+  tabList.appendChild(tab);
+
+  // panel
+  const panel = document.createElement("div");
+  panel.className = `exp-panel ${i === 0 ? "active" : ""}`;
+  panel.dataset.index = i;
+  panel.innerHTML = `
+    <h3>${exp.title}</h3>
+    <p class="exp-date">${exp.date}</p>
+    <ul>
+      ${exp.bullets.map((b) => `<li>${b}</li>`).join("")}
+    </ul>
+  `;
+  panelList.appendChild(panel);
+});
+
+// tab switching
+tabList.addEventListener("click", (e) => {
+  const btn = e.target.closest(".exp-tab");
+  if (!btn) return;
+
+  document
+    .querySelectorAll(".exp-tab")
+    .forEach((t) => t.classList.remove("active"));
+  document
+    .querySelectorAll(".exp-panel")
+    .forEach((p) => p.classList.remove("active"));
+
+  btn.classList.add("active");
+  document
+    .querySelector(`.exp-panel[data-index="${btn.dataset.index}"]`)
+    .classList.add("active");
+});
+
+function moveIndicator(btn) {
+  const indicator = document.querySelector(".experience-indicator");
+  const li = btn.parentElement;
+  const isMobile = window.innerWidth <= 800;
+
+  if (isMobile) {
+    indicator.style.position = "absolute";
+    indicator.style.left = li.offsetLeft + "px";
+    indicator.style.width = li.offsetWidth + "px";
+    indicator.style.top = "";
+    indicator.style.height = "2px";
+  } else {
+    indicator.style.position = "absolute";
+    indicator.style.top = li.offsetTop + "px";
+    indicator.style.height = li.offsetHeight + "px";
+    indicator.style.left = "0";
+    indicator.style.width = "2px";
+  }
+}
+
+// recalculate on resize
+window.addEventListener("resize", () => {
+  const activeTab = document.querySelector(".exp-tab.active");
+  if (activeTab) moveIndicator(activeTab);
+});
+
+const firstTab = document.querySelector(".exp-tab");
+if (firstTab) moveIndicator(firstTab);
+
+tabList.addEventListener("click", (e) => {
+  const btn = e.target.closest(".exp-tab");
+  if (!btn) return;
+
+  document
+    .querySelectorAll(".exp-tab")
+    .forEach((t) => t.classList.remove("active"));
+  document
+    .querySelectorAll(".exp-panel")
+    .forEach((p) => p.classList.remove("active"));
+
+  btn.classList.add("active");
+  document
+    .querySelector(`.exp-panel[data-index="${btn.dataset.index}"]`)
+    .classList.add("active");
+  moveIndicator(btn);
+});
 
 //work
 // img 2400 1600 800 400
@@ -66,7 +195,7 @@ const works = [
   {
     name: "Sonderegger",
     span: "Replicated Awwward winning site",
-    desc: "Replicated an awwward-winning website called Sonderegger using Next.js and Tailwind. As part of the process, I optimized the website, resulting in improved speed and smoother performance compared to the original site. The website now loads faster, providing a better user experience for visitors.",
+    desc: "High-fidelity recreation of an award-winning site built with Next.js, TypeScript and GSAP. Optimized for performance — loads faster than the original with smoother animations.",
     tools: [
       "HTML",
       "CSS",
@@ -88,7 +217,7 @@ const works = [
   {
     name: "Stand Out",
     span: "Online clothing store",
-    desc: "Designed and developed a comprehensive Full-Stack E-commerce website that allows users to purchase clothing items from A to Z. Upon visiting the site, you will be automatically logged in as an admin, giving you the ability to upload and edit products as needed.",
+    desc: "Full-stack e-commerce platform with complete product flow, cart, checkout, and scalable state management. Built with React, Node.js, MongoDB and Cloudinary.",
     tools: [
       "HTML",
       "CSS",
@@ -119,7 +248,7 @@ const works = [
   {
     name: "Sspotify ",
     span: "Replicated Spotify web-player",
-    desc: "Created a replica of the Spotify web player using React, complete with all functionalities such as playing music, creating queues, and even a karaoke feature. This project highlights my expertise in front-end development, particularly in using React to create dynamic and interactive web applications.",
+    desc: "A fully functional Spotify web player built with React — complete with audio playback, queue system, shuffle, karaoke mode, liked songs, custom playlists, and artist pages. Fully responsive on mobile, which the original Spotify web app isn't.",
     tools: ["HTML", "CSS", "SCSS", "JavaScript", "React", "Redux"],
     link: "https://sspotify.vercel.app",
     github: "https://github.com/YuvarajAnbu/spotify-clone",
@@ -129,16 +258,27 @@ const works = [
     darkBg: "#5b615e",
   },
   {
-    name: "Photographer",
-    span: "Photographer portfolio",
-    desc: "a photographer's portfolio, designed to showcase their work and provide information about them to others.",
-    tools: ["HTML", "CSS", "JavaScript", "React", "GSAP"],
-    link: "https://xander-photographer.netlify.app",
-    github: "https://github.com/YuvarajAnbu/photograher-portfolio",
-    img: "photographer",
-    single: true,
-    bg: "#184d47",
+    name: "Apvel Technologies",
+    span: "Cloud services startup website",
+    desc: "Designed and developed a full marketing site for a France-based ServiceNow consulting startup, handling design, development, and deployment end-to-end.",
+    tools: ["HTML", "CSS", "SCSS", "JavaScript"],
+    link: "https://apvel.netlify.app",
+    github: "https://github.com/YuvarajAnbu/Apvel-Technologies",
+    img: "apvel",
+    bg: "#515151",
+    darkBg: "#454545",
   },
+  // {
+  //   name: "Photographer",
+  //   span: "Photographer portfolio",
+  //   desc: "a photographer's portfolio, designed to showcase their work and provide information about them to others.",
+  //   tools: ["HTML", "CSS", "JavaScript", "React", "GSAP"],
+  //   link: "https://xander-photographer.netlify.app",
+  //   github: "https://github.com/YuvarajAnbu/photograher-portfolio",
+  //   img: "photographer",
+  //   single: true,
+  //   bg: "#184d47",
+  // },
 ];
 
 works.forEach((el) => {
