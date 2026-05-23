@@ -158,14 +158,13 @@ body {
 .loaded .landing {
   display: flex;
   justify-content: center;
-  align-items: flex-end;
   margin: 150px auto;
   padding: 0 6%;
 
   &-img {
-    width: 300px;
-    min-width: 300px;
-    height: 390px;
+    width: 330px;
+    min-width: 330px;
+    height: 429px;
     position: relative;
 
     img {
@@ -215,7 +214,7 @@ body {
   }
   &-content {
     margin-left: 100px;
-    margin-top: 50px;
+    margin-top: 100px;
     max-width: 700px;
     opacity: 0;
     animation: fadeContent 1s ease 0.5s;
@@ -260,10 +259,31 @@ body {
         color: var(--selection-color);
         cursor: pointer;
       }
+    }
 
-      &#skills {
-        span {
-          color: var(--selection-color);
+    &-skills {
+      &-title {
+        font-weight: 600;
+        margin-top: 25px !important;
+        // opacity: 1 !important;
+      }
+
+      p {
+        // opacity: 1 !important;
+      }
+
+      #skills {
+        margin-top: 2px;
+        p {
+          margin-top: 10px;
+
+          strong {
+            font-weight: 600;
+          }
+
+          span {
+            color: var(--selection-color);
+          }
         }
       }
     }

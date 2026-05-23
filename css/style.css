@@ -140,14 +140,13 @@ body {
 .loaded .landing {
   display: flex;
   justify-content: center;
-  align-items: flex-end;
   margin: 150px auto;
   padding: 0 6%;
 }
 .loaded .landing-img {
-  width: 300px;
-  min-width: 300px;
-  height: 390px;
+  width: 330px;
+  min-width: 330px;
+  height: 429px;
   position: relative;
 }
 .loaded .landing-img img {
@@ -193,7 +192,7 @@ body {
 }
 .loaded .landing-content {
   margin-left: 100px;
-  margin-top: 50px;
+  margin-top: 100px;
   max-width: 700px;
   opacity: 0;
   animation: fadeContent 1s ease 0.5s;
@@ -232,7 +231,20 @@ body {
   color: var(--selection-color);
   cursor: pointer;
 }
-.loaded .landing-content p#skills span {
+.loaded .landing-content-skills-title {
+  font-weight: 600;
+  margin-top: 25px !important;
+}
+.loaded .landing-content-skills #skills {
+  margin-top: 2px;
+}
+.loaded .landing-content-skills #skills p {
+  margin-top: 10px;
+}
+.loaded .landing-content-skills #skills p strong {
+  font-weight: 600;
+}
+.loaded .landing-content-skills #skills p span {
   color: var(--selection-color);
 }
 .loaded .landing-content-social {

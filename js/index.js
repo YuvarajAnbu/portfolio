@@ -17,42 +17,61 @@ document.querySelector(".navbar-links-mode").addEventListener("click", () => {
 });
 
 //skills
-const skills = [
-  "HTML",
-  "CSS",
-  "JavaScript",
-  "TypeScript",
-  "React.js",
-  "Next.js",
-  "Node.js",
-  "Python",
-  "Flask",
-  "MongoDB",
+const skillCategories = [
+  {
+    name: "Frontend",
+    items: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "JavaScript",
+      "HTML",
+      "CSS",
+      "Tailwind",
+      "GSAP",
+      "Framer Motion",
+      "Three.js",
+      "D3.js",
+      "Zustand",
+      "Redux",
+      "React Query",
+      "Storybook",
+      "GraphQL",
+    ],
+  },
+  {
+    name: "Backend",
+    items: ["Node.js", "Python", "Flask", "REST APIs"],
+  },
+  {
+    name: "Tools & DB",
+    items: [
+      "Git",
+      "GitHub",
+      "Azure DevOps",
+      "Vitest",
+      "Playwright",
+      "Docker",
+      "GitHub Actions",
+      "CI/CD",
+      "MongoDB",
+      "PostgreSQL",
+      "Cloudinary",
+      "Monaco Editor",
+      "Tiptap",
+      "Payload CMS",
+    ],
+  },
 ];
 
-//frameworks
-const fr = [
-  "Tailwind",
-  "Three.js",
-  "D3.js",
-  "GSAP",
-  "Framer Motion",
-  "Zustand",
-  "Redux",
-  "Xterm.js",
-  "Monaco Editor",
-  "Tiptap",
-  "Payload CMS",
-  "Azure DevOps",
-  "Cloudinary",
-];
-
-let html = `I'm skilled at ${skills
-  .map((el) => `<span>${el}</span>`)
-  .join(", ")}, and frameworks/libraries like ${fr
-  .slice(0, -1)
-  .map((el) => `<span>${el}</span>`)
-  .join(", ")}, and <span>${fr.slice(-1)}</span>`;
+let html = skillCategories
+  .map(
+    (cat) =>
+      `<p><strong>${cat.name}:</strong> ${cat.items
+        .map((el) => `<span>${el}</span>`)
+        .join(", ")}`,
+  )
+  .join("");
 
 document.getElementById("skills").insertAdjacentHTML("beforeend", html);
 
