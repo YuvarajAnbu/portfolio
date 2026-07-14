@@ -8,13 +8,25 @@ window.onload = () => {
 if (localStorage.getItem("dark") === "false")
   document.querySelector("body").classList.remove("dark");
 
-document.querySelector(".navbar-links-mode").addEventListener("click", () => {
+const themeToggle = document.querySelector(".navbar-links-mode");
+
+themeToggle.addEventListener("click", () => {
   document.querySelector("body").classList.toggle("dark");
-  localStorage.setItem(
-    "dark",
-    document.querySelector("body").classList.contains("dark"),
+  const isDark = document.querySelector("body").classList.contains("dark");
+  localStorage.setItem("dark", isDark);
+  themeToggle.setAttribute("aria-pressed", String(isDark));
+  themeToggle.setAttribute(
+    "aria-label",
+    `Switch to ${isDark ? "light" : "dark"} theme`,
   );
 });
+
+const isDarkTheme = document.querySelector("body").classList.contains("dark");
+themeToggle.setAttribute("aria-pressed", String(isDarkTheme));
+themeToggle.setAttribute(
+  "aria-label",
+  `Switch to ${isDarkTheme ? "light" : "dark"} theme`,
+);
 
 //skills
 const skillCategories = [
@@ -126,13 +138,18 @@ const panelList = document.querySelector(".experience-panels");
 experiences.forEach((exp, i) => {
   // tab button
   const tab = document.createElement("li");
-  tab.innerHTML = `<button class="exp-tab ${i === 0 ? "active" : ""}" data-index="${i}">${exp.company}</button>`;
+  tab.setAttribute("role", "presentation");
+  tab.innerHTML = `<button class="exp-tab ${i === 0 ? "active" : ""}" id="experience-tab-${i}" role="tab" data-index="${i}" aria-controls="experience-panel-${i}" aria-selected="${i === 0}" tabindex="${i === 0 ? "0" : "-1"}">${exp.company}</button>`;
   tabList.appendChild(tab);
 
   // panel
   const panel = document.createElement("div");
   panel.className = `exp-panel ${i === 0 ? "active" : ""}`;
   panel.dataset.index = i;
+  panel.id = `experience-panel-${i}`;
+  panel.setAttribute("role", "tabpanel");
+  panel.setAttribute("aria-labelledby", `experience-tab-${i}`);
+  panel.hidden = i !== 0;
   panel.innerHTML = `
     <h3>${exp.title}</h3>
     <p class="exp-date">${exp.date}</p>
@@ -143,23 +160,23 @@ experiences.forEach((exp, i) => {
   panelList.appendChild(panel);
 });
 
-// tab switching
-tabList.addEventListener("click", (e) => {
-  const btn = e.target.closest(".exp-tab");
-  if (!btn) return;
+function selectExperienceTab(btn, shouldFocus = false) {
+  document.querySelectorAll(".exp-tab").forEach((tab) => {
+    const isActive = tab === btn;
+    tab.classList.toggle("active", isActive);
+    tab.setAttribute("aria-selected", String(isActive));
+    tab.tabIndex = isActive ? 0 : -1;
+  });
 
-  document
-    .querySelectorAll(".exp-tab")
-    .forEach((t) => t.classList.remove("active"));
-  document
-    .querySelectorAll(".exp-panel")
-    .forEach((p) => p.classList.remove("active"));
+  document.querySelectorAll(".exp-panel").forEach((panel) => {
+    const isActive = panel.dataset.index === btn.dataset.index;
+    panel.classList.toggle("active", isActive);
+    panel.hidden = !isActive;
+  });
 
-  btn.classList.add("active");
-  document
-    .querySelector(`.exp-panel[data-index="${btn.dataset.index}"]`)
-    .classList.add("active");
-});
+  moveIndicator(btn);
+  if (shouldFocus) btn.focus();
+}
 
 function moveIndicator(btn) {
   const indicator = document.querySelector(".experience-indicator");
@@ -193,19 +210,37 @@ if (firstTab) moveIndicator(firstTab);
 tabList.addEventListener("click", (e) => {
   const btn = e.target.closest(".exp-tab");
   if (!btn) return;
+  selectExperienceTab(btn);
+});
 
-  document
-    .querySelectorAll(".exp-tab")
-    .forEach((t) => t.classList.remove("active"));
-  document
-    .querySelectorAll(".exp-panel")
-    .forEach((p) => p.classList.remove("active"));
+tabList.addEventListener("keydown", (e) => {
+  if (
+    ![
+      "ArrowLeft",
+      "ArrowRight",
+      "ArrowUp",
+      "ArrowDown",
+      "Home",
+      "End",
+    ].includes(e.key)
+  )
+    return;
 
-  btn.classList.add("active");
-  document
-    .querySelector(`.exp-panel[data-index="${btn.dataset.index}"]`)
-    .classList.add("active");
-  moveIndicator(btn);
+  const tabs = [...document.querySelectorAll(".exp-tab")];
+  const currentIndex = tabs.indexOf(e.target.closest(".exp-tab"));
+  if (currentIndex === -1) return;
+
+  e.preventDefault();
+  const nextIndex =
+    e.key === "Home"
+      ? 0
+      : e.key === "End"
+        ? tabs.length - 1
+        : (currentIndex +
+            (e.key === "ArrowLeft" || e.key === "ArrowUp" ? -1 : 1) +
+            tabs.length) %
+          tabs.length;
+  selectExperienceTab(tabs[nextIndex], true);
 });
 
 //work
@@ -252,6 +287,7 @@ const works = [
     github: "https://github.com/YuvarajAnbu/standout",
     img: "standout",
     bg: "#626a70",
+    darkBg: "#464d52",
   },
   {
     name: "DMR Contractors",
@@ -265,6 +301,26 @@ const works = [
     darkBg: "#092680",
   },
   {
+    name: "Premnath Portfolio",
+    span: "Personal portfolio for a developer",
+    desc: "Designed and developed a personal portfolio for a developer, showcasing their skills, projects, and experience in a visually appealing and user-friendly manner.",
+    tools: [
+      "HTML",
+      "CSS",
+      "Tailwind",
+      "JavaScript",
+      "React",
+      "Framer Motion",
+      "Vite",
+    ],
+    link: "https://premnathanbu.com",
+    github: "https://github.com/PremnathAnbu/portfolio",
+    img: "premnathanbu",
+    single: true,
+    bg: "#3c3c3c",
+    darkBg: "#313131",
+  },
+  {
     name: "Sspotify ",
     span: "Replicated Spotify web-player",
     desc: "A fully functional Spotify web player built with React — complete with audio playback, queue system, shuffle, karaoke mode, liked songs, custom playlists, and artist pages. Fully responsive on mobile, which the original Spotify web app isn't.",
@@ -274,7 +330,7 @@ const works = [
     img: "sspotify",
     single: true,
     bg: "#18201cc0",
-    darkBg: "#5b615e",
+    darkBg: "#3d4240",
   },
   {
     name: "Apvel Technologies",
@@ -356,27 +412,36 @@ works.forEach((el) => {
 </div>
 <div class="work-item-img">
   <img
-    src="./images/${el.img}_800.webp"
-    alt="website image"
+    src="./public/images/${el.img}-800.webp"
+    alt="${el.name} project preview"
     srcset="
-    ./images/${el.img}-400.webp 400w, 
-    ./images/${el.img}-800.webp 800w, 
-    ./images/${el.img}-1600.webp 1600w, 
-    ./images/${el.img}-2400.webp 2400w"
-    sizes="(max-width: 500px) 400px, 800px"
+    ./public/images/${el.img}-400.webp 400w,
+    ./public/images/${el.img}-800.webp 800w,
+    ./public/images/${el.img}-1600.webp 1600w,
+    ./public/images/${el.img}-2400.webp 2400w"
+    sizes="(max-width: 800px) 100vw, (max-width: 1250px) 50vw, 600px"
+    width="1600"
+    height="${el.single ? 900 : 1104}"
+    loading="lazy"
+    decoding="async"
   />
   ${
     !el.single
       ? `<img
     class="back"
-    src="./images/${el.img}_800.webp"
-    alt="website image"
+    src="./public/images/${el.img}-800.webp"
+    alt=""
+    aria-hidden="true"
     srcset="
-    ./images/${el.img}-400.webp 400w, 
-    ./images/${el.img}-800.webp 800w, 
-    ./images/${el.img}-1600.webp 1600w, 
-    ./images/${el.img}-2400.webp 2400w"
-    sizes="(max-width: 500px) 400px, 800px"
+    ./public/images/${el.img}-400.webp 400w,
+    ./public/images/${el.img}-800.webp 800w,
+    ./public/images/${el.img}-1600.webp 1600w,
+    ./public/images/${el.img}-2400.webp 2400w"
+    sizes="(max-width: 800px) 100vw, (max-width: 1250px) 50vw, 600px"
+    width="1600"
+    height="1104"
+    loading="lazy"
+    decoding="async"
   />`
       : ""
   }

@@ -1,4 +1,11 @@
 @charset "UTF-8";
+@font-face {
+  font-family: "Nunito";
+  src: url("../public/fonts/Nunito-Variable.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
 * {
   margin: 0;
   padding: 0;
@@ -59,6 +66,9 @@ body {
 .dark .work-item {
   background-color: var(--dark-bg);
 }
+.dark .landing-content p {
+  opacity: 0.85;
+}
 .dark .sun {
   display: block !important;
 }
@@ -110,6 +120,17 @@ body {
 .navbar-links li p {
   font-size: 14px;
   font-weight: 700;
+}
+.navbar-links li button {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  padding: 0;
 }
 .navbar-links-mode {
   padding-top: 0 !important;
@@ -221,7 +242,6 @@ body {
 .loaded .landing-content p {
   font-size: 15px;
   margin-top: 10px;
-  opacity: 0.85;
 }
 .loaded .landing-content p:first-of-type {
   margin-top: 25px;
@@ -251,6 +271,7 @@ body {
   list-style-type: none;
   display: flex;
   margin-top: 25px;
+  align-items: center;
 }
 .loaded .landing-content-social li {
   border-radius: 4px;
@@ -285,6 +306,10 @@ body {
 }
 .loaded .landing-content-social .resume svg {
   color: black;
+}
+.loaded .landing-content-social .upwork svg {
+  width: 22px !important;
+  transform: translateY(3px);
 }
 
 @keyframes fadeContent {
@@ -473,7 +498,7 @@ body {
 }
 .work-item-content p {
   margin: 25px 0 20px 0;
-  opacity: 0.85;
+  opacity: 1;
 }
 .work-item-content-tools {
   margin-bottom: 30px;
@@ -588,6 +613,11 @@ footer {
   text-align: center;
   font-size: 14px;
   margin-bottom: 10px;
+}
+
+:focus-visible {
+  outline: 3px solid var(--selection-color);
+  outline-offset: 3px;
 }
 
 @media (max-width: 1250px) {

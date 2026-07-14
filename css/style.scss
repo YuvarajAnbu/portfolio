@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "Nunito";
+  src: url("../public/fonts/Nunito-Variable.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -70,6 +78,10 @@ body {
   //   }
   // }
 
+  .landing-content p {
+    opacity: 0.85;
+  }
+
   .sun {
     display: block !important;
   }
@@ -120,6 +132,16 @@ body {
       p {
         font-size: 14px;
         font-weight: 700;
+      }
+
+      button {
+        appearance: none;
+        border: 0;
+        background: transparent;
+        color: inherit;
+        cursor: pointer;
+        display: flex;
+        padding: 0;
       }
     }
 
@@ -248,7 +270,6 @@ body {
     p {
       font-size: 15px;
       margin-top: 10px;
-      opacity: 0.85;
 
       &:first-of-type {
         margin-top: 25px;
@@ -292,6 +313,7 @@ body {
       list-style-type: none;
       display: flex;
       margin-top: 25px;
+      align-items: center;
       li {
         border-radius: 4px;
         margin-right: 10px;
@@ -341,6 +363,12 @@ body {
       .resume {
         svg {
           color: black;
+        }
+      }
+      .upwork {
+        svg {
+          width: 22px !important;
+          transform: translateY(3px);
         }
       }
     }
@@ -563,7 +591,7 @@ body {
 
       p {
         margin: 25px 0 20px 0;
-        opacity: 0.85;
+        opacity: 1;
       }
 
       &-tools {
@@ -709,6 +737,11 @@ footer {
   text-align: center;
   font-size: 14px;
   margin-bottom: 10px;
+}
+
+:focus-visible {
+  outline: 3px solid var(--selection-color);
+  outline-offset: 3px;
 }
 
 @media (max-width: 1250px) {
